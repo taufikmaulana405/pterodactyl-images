@@ -138,7 +138,7 @@ ENV  USER=${USER_NAME} HOME=${WORKDIR}
 WORKDIR ${WORKDIR}
 
 # Copy the entrypoint
-COPY ./entrypoint.sh /entrypoint.sh
+COPY ./entrypoint-nginx.sh /entrypoint.sh
 
 # Set the entrypoint
 CMD ["/bin/bash", "/entrypoint.sh"]

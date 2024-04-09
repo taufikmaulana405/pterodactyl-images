@@ -1,5 +1,5 @@
 # Import the base image
-FROM php:8.1-fpm
+FROM php:8.0-fpm
 
 ENV PS1="\u@\h:\w\\$ "
 ENV TZ="Asia/Jakarta"
@@ -138,7 +138,7 @@ ENV  USER=${USER_NAME} HOME=${WORKDIR}
 WORKDIR ${WORKDIR}
 
 # Copy the entrypoint
-COPY ./entrypoint.sh /entrypoint.sh
+COPY ./entrypoint-nginx.sh /entrypoint.sh
 
 # Set the entrypoint
 CMD ["/bin/bash", "/entrypoint.sh"]

@@ -28,20 +28,20 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
     - [Panel Pterodactyl](https://pterodactyl.io/)
 - Tags:
     - PHP 8.0
-        - `Link`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.0`
     - PHP 8.0 With Nginx
-        - `Link`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.0-nginx`
     - PHP 8.1
-        - `Link`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.1`
     - PHP 8.1 With Nginx
-        - `Link`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.1-nginx`
     - PHP 8.2
-        - `Link`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.2`
     - PHP 8.2 With Nginx
-        - `Link`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.2-nginx`
     - PHP 8.3
-        - `Link`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.3`
     - PHP 8.3 With Nginx
-        - `Link`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.3-nginx`
 - Eggs:
-    - [PHP For Nginx](https://github.com/Sigma-Production/ptero-eggs)
+    - [Host Web Using Nginx and PHP](https://github.com/Sigma-Production/ptero-eggs)

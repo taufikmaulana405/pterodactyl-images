@@ -28,20 +28,50 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
     - [Panel Pterodactyl](https://pterodactyl.io/)
 - Tags:
     - PHP 8.0
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.0`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php8.0`
     - PHP 8.0 With Nginx
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.0-nginx`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php8.0-nginx`
     - PHP 8.1
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.1`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php8.1`
     - PHP 8.1 With Nginx
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.1-nginx`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php8.1-nginx`
     - PHP 8.2
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.2`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php8.2`
     - PHP 8.2 With Nginx
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.2-nginx`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php8.2-nginx`
     - PHP 8.3
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.3`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php8.3`
     - PHP 8.3 With Nginx
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:8.3-nginx`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php8.3-nginx`
 - Eggs:
     - [Host Web Using Nginx and PHP](https://github.com/Sigma-Production/ptero-eggs)
+
+### Ubuntu
+- Tags
+    - Ubuntu latest
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_latest`
+    - Ubuntu 24
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_24`
+    - Ubuntu 23
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_23`
+    - Ubuntu 22
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_22`
+    - Ubuntu 20
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_20`
+    - Ubuntu 18
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_18`
+    
+### Installer Image
+- Tags
+    - Ubuntu latest
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_latest`
+    - Ubuntu 24
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_24`
+    - Ubuntu 23
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_23`
+    - Ubuntu 22
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_22`
+    - Ubuntu 20
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_20`
+    - Ubuntu 18
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_18`

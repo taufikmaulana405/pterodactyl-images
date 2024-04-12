@@ -46,8 +46,26 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
 - Eggs:
     - [Host Web Using Nginx and PHP](https://github.com/Sigma-Production/ptero-eggs)
 
+### NodeJS
+- Tags:
+    - NodeJS Latest
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:nodejs_latest`
+
+### Java
+- Tags:
+    - Java Amazon Corretto Latest
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:java_corretto`
+    - Java GraalVM Latest
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:java_graalvm`
+    - Java Liberica Latest
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:java_liberica`
+    - Java Shipilev Latest
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:java_shipilev`
+    - Java Zulu Latest
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:java_zulu`
+
 ### Ubuntu
-- Tags
+- Tags:
     - Ubuntu latest
         - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_latest`
     - Ubuntu 24
@@ -62,7 +80,7 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
         - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_18`
     
 ### Installer
-- Tags
+- Tags:
     - Ubuntu latest
         - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_latest`
     - Ubuntu 24

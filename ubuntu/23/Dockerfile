@@ -1,11 +1,12 @@
-FROM ubuntu:23.04
+# Import base image
+FROM 	ubuntu:23.04
 
 # Environment variables
-ENV DEBIAN_FRONTEND=noninteractive
+ENV 	DEBIAN_FRONTEND=noninteractive
 
 # Install packages
-RUN	apt-get update -y && apt-get upgrade -y && apt-get install -y ca-certificates iproute2 tzdata adduser curl \
-	&& adduser -D -h /home/container container
+RUN		apt-get update -y && apt-get upgrade -y && apt-get install -y ca-certificates iproute2 tzdata adduser curl \
+		&& adduser -D -h /home/container container
 
 # Set user and workdir
 USER    container

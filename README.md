@@ -61,7 +61,7 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
     - Ubuntu 18
         - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_18`
     
-### Installer Image
+### Installer
 - Tags
     - Ubuntu latest
         - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_latest`

@@ -8,38 +8,36 @@ on:
         branches:
             - master
         paths:
-            php/**
+            installer/ubuntu/**
 
 env:
     # Use docker.io for Docker Hub if empty
     REGISTRY: ghcr.io
     # Package tag name
-    PACKAGE_TAG: php
+    PACKAGE_TAG: installer-ubuntu
 
 permissions:
     actions: read
     packages: write
 
 concurrency:
-    group: php${{ github.ref }}-1
+    group: installer-ubuntu${{ github.ref }}-1
     cancel-in-progress: true
 
 jobs:
     push:
-        name: "php${{ matrix.tag }}"
+        name: "installer-ubuntu${{ matrix.tag }}"
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
             matrix:
                 tag:
-                    - "8.0"
-                    - 8.0-nginx
-                    - 8.1
-                    - 8.1-nginx
-                    - 8.2
-                    - 8.2-nginx
-                    - 8.3
-                    - 8.3-nginx
+                    - latest
+                    - 24
+                    - 23
+                    - 22
+                    - 20
+                    - 18
         steps:
             # Checkout the repository
             - name: Checkout
@@ -66,9 +64,9 @@ jobs:
             - name: Build and push
               uses: docker/build-push-action@v5
               with:
-                context: ./${{ env.PACKAGE_TAG }}
-                file: ./${{ env.PACKAGE_TAG }}/${{ matrix.tag }}/Dockerfile
+                context: ./installer/ubuntu
+                file: ./installer/ubuntu/${{ matrix.tag }}/Dockerfile
                 push: true
                 tags: |
-                    ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}${{ matrix.tag }}
+                    ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}_${{ matrix.tag }}
                 

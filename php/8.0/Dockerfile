@@ -33,7 +33,10 @@ RUN     apt-get update && \
         git \
         libxml2-dev \
         nodejs \
-        npm
+        npm \
+        && apt-get clean \
+        && rm -rfv /var/lib/apt/lists/* \
+        && npm install -g yarn
 
 # Install soap extention
 RUN     docker-php-ext-install soap
@@ -126,8 +129,6 @@ RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm8
 #
 
 ADD     ./local.ini /usr/local/etc/php/conf.d
-
-RUN     rm -r /var/lib/apt/lists/*
     
 USER    ${USER_NAME}
 ENV     USER=${USER_NAME} HOME=${WORKDIR}

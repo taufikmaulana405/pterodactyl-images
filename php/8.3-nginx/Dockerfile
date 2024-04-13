@@ -32,10 +32,10 @@ RUN     apt-get update && \
         libmagickwand-dev \
         git \
         libxml2-dev \
-        nodejs \
-        npm \
         nginx \
-        ash
+        ash \
+        && apt-get clean \
+        && rm -rfv /var/lib/apt/lists/*
 
 # Install soap extention
 RUN     docker-php-ext-install soap
@@ -128,8 +128,6 @@ RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm8
 #
 
 ADD     ./local.ini /usr/local/etc/php/conf.d
-
-RUN     rm -r /var/lib/apt/lists/*
     
 USER    ${USER_NAME}
 ENV     USER=${USER_NAME} HOME=${WORKDIR}

@@ -46,8 +46,6 @@ fi
 echo -e "${CYAN}PHP Version: $(php -v) ${RESET_COLOR}\n"
 echo -e "${CYAN}Composer Version: $(composer -V) ${RESET_COLOR}"
 echo -e "${CYAN}$(nginx -v) ${RESET_COLOR}"
-echo -e "${CYAN}Node Version: $(node -v) ${RESET_COLOR}\n"
-echo -e "${CYAN}NPM Version: $(npm -v) ${RESET_COLOR}\n"
 
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')

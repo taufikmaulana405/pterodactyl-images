@@ -1,5 +1,5 @@
 # Import the base image
-FROM    php:8.3-fpm
+FROM    php:7.2-fpm
 
 # Set the environment variables
 ENV     DEBIAN_FRONTEND=noninteractive
@@ -32,10 +32,11 @@ RUN     apt-get update && \
         libmagickwand-dev \
         git \
         libxml2-dev \
-        nginx \
-        ash \
+        nodejs \
+        npm \
         && apt-get clean \
-        && rm -rfv /var/lib/apt/lists/*
+        && rm -rfv /var/lib/apt/lists/* \
+        && npm install -g yarn
 
 # Install soap extention
 RUN     docker-php-ext-install soap
@@ -71,7 +72,6 @@ RUN     docker-php-ext-install bcmath
 # PHPRedis:
 #####################################
 RUN     pecl install redis && docker-php-ext-enable redis
-RUN     pecl install mongodb && docker-php-ext-enable mongodb
 
 #####################################
 # Imagick:
@@ -86,15 +86,8 @@ RUN     pecl install imagick && \
 
 # Install the PHP gd library
 RUN     docker-php-ext-install gd && \
-        docker-php-ext-configure gd --with-freetype --with-jpeg && \
+        docker-php-ext-configure gd && \
         docker-php-ext-install gd
-
-#####################################
-# xDebug:
-#####################################
-
-# Install the xdebug extension
-RUN     pecl install xdebug
 
 #####################################
 # PHP Memcached:
@@ -111,7 +104,7 @@ RUN     pecl install memcached && docker-php-ext-enable memcached
 RUN     curl -s http://getcomposer.org/installer | php && \
         echo "export PATH=${PATH}:/home/container/vendor/bin" >> ~/.bashrc && \
         mv composer.phar /usr/local/bin/composer
-
+        
 # Source the bash
 RUN     . ~/.bashrc
 
@@ -134,7 +127,7 @@ ENV     USER=${USER_NAME} HOME=${WORKDIR}
 WORKDIR ${WORKDIR}
 
 # Copy the entrypoint
-COPY    ./entrypoint-nginx.sh /entrypoint.sh
+COPY    ./entrypoint.sh /entrypoint.sh
 
 # Set the entrypoint
 CMD     ["/bin/bash", "/entrypoint.sh"]

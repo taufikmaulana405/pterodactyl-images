@@ -32,6 +32,14 @@ jobs:
             fail-fast: false
             matrix:
                 tag:
+                    - 7.1
+                    - 7.1-nginx
+                    - 7.2
+                    - 7.2-nginx
+                    - 7.3
+                    - 7.3-nginx
+                    - 7.4
+                    - 7.4-nginx
                     - "8.0"
                     - 8.0-nginx
                     - 8.1

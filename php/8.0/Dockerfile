@@ -73,6 +73,7 @@ RUN     docker-php-ext-install bcmath
 #####################################
 RUN     pecl install redis && docker-php-ext-enable redis
 RUN     pecl install mongodb && docker-php-ext-enable mongodb
+
 #####################################
 # Imagick:
 #####################################
@@ -86,11 +87,9 @@ RUN     pecl install imagick && \
 
 # Install the PHP gd library
 RUN     docker-php-ext-install gd && \
-    #    docker-php-ext-configure gd \
-    #        --with-jpeg-dir
-    #        --with-freetype-dir=/usr/include/freetype2 && \
         docker-php-ext-configure gd --with-freetype --with-jpeg && \
         docker-php-ext-install gd
+
 #####################################
 # xDebug:
 #####################################
@@ -113,6 +112,7 @@ RUN     pecl install memcached && docker-php-ext-enable memcached
 RUN     curl -s http://getcomposer.org/installer | php && \
         echo "export PATH=${PATH}:/home/container/vendor/bin" >> ~/.bashrc && \
         mv composer.phar /usr/local/bin/composer
+        
 # Source the bash
 RUN     . ~/.bashrc
 

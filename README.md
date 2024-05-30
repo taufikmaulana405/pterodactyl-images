@@ -6,27 +6,47 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
 ### PHP
 - Designed for use Web Applications
 - Extensions: 
-    - soap
-    - exif
-    - pcntl
-    - intl
-    - gmp
-    - zip
-    - pdo_mysql
-    - mysqli
-    - pdo_pgsql
-    - bcmath
-    - redis
-    - mongodb
-    - imagick
-    - gd
-    - xdebug
-    - memcached
+
+| Module PHP                     | PHP 8.3 | PHP 8.2 | PHP 8.1 | PHP 8.0 | PHP 7.4 | PHP 7.3 | PHP 7.2 | PHP 7.1 |
+| ------------------------------ | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
+| soap                           |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+| exif                           |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+| pcntl                          |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+| intl                           |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+| gmp                            |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+| zip                            |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+| pdo_mysql                      |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+| pdo_pgsql                      |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+| bcmath                         |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+| redis                          |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ❌   |
+| mongodb                        |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ❌   |   ❌   |    ❌   |   ❌   |
+| imagick                        |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+| gd                             |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+| gd --with-freetype --with-jpeg |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ❌   |   ❌   |    ❌   |   ✔️   |
+| xdebug                         |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ❌   |   ❌   |    ❌   |   ❌   |
+| memcached                      |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+
 - Tested:
     - [Wordpress](https://wordpress.org/)
     - [Laravel](https://laravel.com/)
     - [Panel Pterodactyl](https://pterodactyl.io/)
 - Tags:
+    - PHP 7.1
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php7.1`
+    - PHP 7.1 With Nginx
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php7.1-nginx`
+    - PHP 7.2
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php7.2`
+    - PHP 7.2 With Nginx
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php7.2-nginx`
+    - PHP 7.3
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php7.3`
+    - PHP 7.4 With Nginx
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php7.3-nginx`
+    - PHP 7.4
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php7.4`
+    - PHP 7.4 With Nginx
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:php7.4-nginx`
     - PHP 8.0
         - `ghcr.io/taufikmaulana405/pterodactyl-images:php8.0`
     - PHP 8.0 With Nginx
@@ -93,3 +113,10 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
         - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_20`
     - Ubuntu 18
         - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_18`
+
+## Development
+- Building the image
+    ```sh
+    cd php
+    docker image build -f "8.3-nginx/Dockerfile" -t tes-image:php8.3-nginx .
+    ```

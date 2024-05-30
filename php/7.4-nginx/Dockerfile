@@ -1,5 +1,5 @@
 # Import the base image
-FROM    php:8.3-fpm
+FROM    php:7.4-fpm
 
 # Set the environment variables
 ENV     DEBIAN_FRONTEND=noninteractive
@@ -71,7 +71,6 @@ RUN     docker-php-ext-install bcmath
 # PHPRedis:
 #####################################
 RUN     pecl install redis && docker-php-ext-enable redis
-RUN     pecl install mongodb && docker-php-ext-enable mongodb
 
 #####################################
 # Imagick:
@@ -86,15 +85,8 @@ RUN     pecl install imagick && \
 
 # Install the PHP gd library
 RUN     docker-php-ext-install gd && \
-        docker-php-ext-configure gd --with-freetype --with-jpeg && \
+        docker-php-ext-configure gd && \
         docker-php-ext-install gd
-
-#####################################
-# xDebug:
-#####################################
-
-# Install the xdebug extension
-RUN     pecl install xdebug
 
 #####################################
 # PHP Memcached:

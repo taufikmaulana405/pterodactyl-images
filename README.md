@@ -87,6 +87,11 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
     - Java Zulu Latest
         - `ghcr.io/taufikmaulana405/pterodactyl-images:java_zulu`
 
+### Python
+- Tags:
+    - Python Latest
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:python_latest`
+
 ### Ubuntu
 - Tags:
     - Ubuntu latest

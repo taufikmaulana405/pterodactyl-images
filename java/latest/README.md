@@ -1,0 +1,2 @@
+# This image is based on the official [eclipse](https://hub.docker.com/_/eclipse-temurin) image.
+It is a full-fledged Java development environment with the latest version of Java installed. It is recommended for Production use.

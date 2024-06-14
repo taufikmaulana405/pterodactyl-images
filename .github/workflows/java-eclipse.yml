@@ -1,4 +1,4 @@
-name: Build and Push Docker Image ubuntu-installer
+name: Build and Push Docker Image Java Eclipse
 
 on:
   workflow_dispatch:
@@ -8,37 +8,28 @@ on:
     branches:
       - master
     paths:
-      installer/ubuntu/**
+      java/eclipse/**
 
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # Package tag name
-  PACKAGE_TAG: installer-ubuntu
+  PACKAGE_TAG: java
 
 permissions:
   actions: read
   packages: write
 
 concurrency:
-  group: installer-ubuntu${{ github.ref }}-1
+  group: java-eclipse${{ github.ref }}-1
   cancel-in-progress: true
 
 jobs:
   push:
-    name: "installer-ubuntu_${{ matrix.tag }}"
+    name: java_eclipse
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        tag:
-          - latest
-          - 24
-          - 23
-          - 22
-          - 20
-          - 18
-
     steps:
       # Checkout the repository
       - name: Checkout
@@ -65,8 +56,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./installer/ubuntu
-          file: ./installer/ubuntu/${{ matrix.tag }}/Dockerfile
+          context: ./${{ env.PACKAGE_TAG }}
+          file: ./${{ env.PACKAGE_TAG }}/eclipse/Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}_${{ matrix.tag }}
+            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}

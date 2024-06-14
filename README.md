@@ -73,6 +73,9 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
 
 ### Java
 - Tags:
+    - Java Eclipse Latest
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:java`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:java_eclipse`
     - Java Amazon Corretto Latest
         - `ghcr.io/taufikmaulana405/pterodactyl-images:java_corretto`
     - Java GraalVM Latest
@@ -117,6 +120,8 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
 ## Development
 - Building the image
     ```sh
+    # Enter the image folder
     cd php
+    # Build the image by customizing the image version and tags you want to build
     docker image build -f "8.3-nginx/Dockerfile" -t tes-image:php8.3-nginx .
     ```

@@ -75,16 +75,10 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
 - Tags:
     - Latest (Java Eclipse)
         - `ghcr.io/taufikmaulana405/pterodactyl-images:java_latest`
-    - Java Amazon Corretto Latest
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:java_corretto`
     - Java GraalVM Latest
         - `ghcr.io/taufikmaulana405/pterodactyl-images:java_graalvm`
     - Java Liberica Latest
         - `ghcr.io/taufikmaulana405/pterodactyl-images:java_liberica`
-    - Java Shipilev Latest
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:java_shipilev`
-    - Java Zulu Latest
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:java_zulu`
 
 ### Python
 - Tags:

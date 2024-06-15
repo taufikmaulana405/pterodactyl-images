@@ -33,11 +33,8 @@ jobs:
       matrix:
         tag:
           - latest
-          - correto
           - graalvm
           - liberica
-          - shipilev
-          - zulu
 
     steps:
       # Checkout the repository

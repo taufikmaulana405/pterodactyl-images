@@ -12,6 +12,7 @@ RUN		apt-get update -y \
 		iproute2 \
 		tzdata \
 		curl \
+		adduser \
 		&& adduser -D -h /home/container container
 
 # Set user and workdir

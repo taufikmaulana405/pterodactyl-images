@@ -65,4 +65,4 @@ jobs:
           file: ./${{ env.PACKAGE_TAG }}/${{ matrix.tag }}/Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}_${{ matrix.tag }}
+            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}${{ matrix.tag != 'latest' && '_${{ matrix.tag }}' || '' }}

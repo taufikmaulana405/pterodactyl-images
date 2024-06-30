@@ -15,6 +15,8 @@ env:
   REGISTRY: ghcr.io
   # Package tag name
   PACKAGE_TAG: ubuntu
+  # Tag Name default value
+  TAG_NAME: none
 
 permissions:
   actions: read
@@ -61,6 +63,17 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # Set tag name based on condition
+      - name: Set tag name
+        id: set_tag_name
+        run: |
+          if [ "${{ matrix.tag }}" = "latest" ]; then
+            echo "TAG_NAME=${{ env.PACKAGE_TAG }}" >> $GITHUB_ENV
+          else
+            echo "TAG_NAME=${{ env.PACKAGE_TAG }}-${{ matrix.tag }}" >> $GITHUB_ENV
+          fi
+
+      # Build and push Docker image to the registry
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
@@ -68,4 +81,4 @@ jobs:
           file: ./${{ env.PACKAGE_TAG }}/${{ matrix.tag }}/Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}_${{ matrix.tag }}
+            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.TAG_NAME }}

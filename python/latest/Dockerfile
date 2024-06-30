@@ -5,9 +5,9 @@ FROM	python:latest
 ENV		DEBIAN_FRONTEND=noninteractive
 
 # Installing Depedencies
-RUN		apt-get update -y && \
-        apt-get upgrade -y && \
-        apt-get install -y \
+RUN		apt-get update -y \
+        && apt-get upgrade -y \
+        && apt-get install -y \
         ca-certificates \
         curl \
         ffmpeg \

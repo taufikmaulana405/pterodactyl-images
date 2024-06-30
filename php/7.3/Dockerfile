@@ -15,8 +15,9 @@ ENV     COMPOSER_MEMORY_LIMIT='-1'
 ENV     PATH=${PATH}:${WORKDIR}/vendor/bin
 
 # Installing Depedencies
-RUN     apt-get update && \
-        apt-get install -y --force-yes --no-install-recommends \
+RUN     apt-get update \
+        && apt-get upgrade -y \
+        && apt-get install -y --force-yes --no-install-recommends \
         libmemcached-dev \
         libmcrypt-dev \
         libreadline-dev \

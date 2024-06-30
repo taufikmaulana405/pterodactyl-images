@@ -70,7 +70,7 @@ jobs:
           if [ "${{ matrix.tag }}" = "latest" ]; then
             echo "TAG_NAME=${{ env.PACKAGE_TAG }}" >> $GITHUB_ENV
           else
-            echo "TAG_NAME=${{ env.PACKAGE_TAG }}-${{ matrix.tag }}" >> $GITHUB_ENV
+            echo "TAG_NAME=${{ env.PACKAGE_TAG }}_${{ matrix.tag }}" >> $GITHUB_ENV
           fi
 
       # Build and push Docker image to the registry

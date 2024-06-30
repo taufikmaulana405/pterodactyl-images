@@ -69,12 +69,12 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
 ### NodeJS
 - Tags:
     - NodeJS Latest
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:nodejs_latest`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:nodejs`
 
 ### Java
 - Tags:
     - Latest (Java Eclipse)
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:java_latest`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:java`
     - Java GraalVM Latest
         - `ghcr.io/taufikmaulana405/pterodactyl-images:java_graalvm`
     - Java Liberica Latest
@@ -83,12 +83,12 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
 ### Python
 - Tags:
     - Python Latest
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:python_latest`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:python`
 
 ### Ubuntu
 - Tags:
     - Ubuntu latest
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_latest`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu`
     - Ubuntu 24
         - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_24`
     - Ubuntu 23
@@ -103,7 +103,7 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
 ### Installer
 - Tags:
     - Ubuntu latest
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_latest`
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu`
     - Ubuntu 24
         - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_24`
     - Ubuntu 23

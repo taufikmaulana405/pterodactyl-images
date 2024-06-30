@@ -3,7 +3,21 @@ FROM    ghcr.io/graalvm/jdk-community:latest
 
 # Installing Dependencies
 RUN     microdnf update \
-        && microdnf install -y curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute gcc gcc-c++ freetype libstdc++ lsof \
+        && microdnf install -y \
+        curl \
+        ca-certificates \
+        openssl \
+        git \
+        tar \
+        sqlite \
+        fontconfig \
+        tzdata \
+        iproute \
+        gcc \
+        gcc-c++ \
+        freetype \
+        libstdc++ \
+        lsof \
         && microdnf clean all \
         && adduser --home-dir /home/container container
 

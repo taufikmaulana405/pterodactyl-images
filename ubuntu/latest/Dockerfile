@@ -5,7 +5,13 @@ FROM 	ubuntu:latest
 ENV 	DEBIAN_FRONTEND=noninteractive
 
 # Install packages
-RUN		apt-get update -y && apt-get upgrade -y && apt-get install -y ca-certificates iproute2 tzdata curl \
+RUN		apt-get update -y \
+		&& apt-get upgrade -y \
+		&& apt-get install -y \
+		ca-certificates \
+		iproute2 \
+		tzdata \
+		curl \
 		&& adduser -D -h /home/container container
 
 # Set user and workdir

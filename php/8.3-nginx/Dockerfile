@@ -35,8 +35,12 @@ RUN     apt-get update \
         libxml2-dev \
         nginx \
         ash \
+        htop \
+        adduser \
+        && apt-get autoremove -y \
         && apt-get clean \
-        && rm -rfv /var/lib/apt/lists/*
+        && rm -rfv /var/lib/apt/lists/* \
+        && adduser -D -h ${WORKDIR} ${USER_NAME}
 
 # Install soap extention
 RUN     docker-php-ext-install soap

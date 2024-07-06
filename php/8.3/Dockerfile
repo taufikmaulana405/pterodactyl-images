@@ -35,9 +35,13 @@ RUN     apt-get update \
         libxml2-dev \
         nodejs \
         npm \
+        htop \
+        adduser \
+        && apt-get autoremove -y \
         && apt-get clean \
         && rm -rfv /var/lib/apt/lists/* \
-        && npm install -g yarn
+        && npm install -g yarn \
+        && adduser -D -h ${WORKDIR} ${USER_NAME}
 
 # Install soap extention
 RUN     docker-php-ext-install soap

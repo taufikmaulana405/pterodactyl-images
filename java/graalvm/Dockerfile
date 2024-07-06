@@ -7,7 +7,6 @@ RUN     microdnf update \
         curl \
         ca-certificates \
         openssl \
-        git \
         tar \
         sqlite \
         fontconfig \

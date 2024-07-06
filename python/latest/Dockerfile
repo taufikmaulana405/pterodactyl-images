@@ -18,8 +18,9 @@ RUN		apt-get update -y \
         openssl \
         sqlite3 \
         tar \
-        tzdata \
         dnsutils \
+        htop \
+        && apt-get autoremove -y \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/* \
 		&& adduser -D -h /home/container container

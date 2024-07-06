@@ -7,7 +7,6 @@ RUN     apt-get update -y \
         curl \
         ca-certificates \
         openssl \
-        git \
         tar \
         sqlite3 \
         fontconfig \
@@ -15,8 +14,9 @@ RUN     apt-get update -y \
         libstdc++6 \
         lsof \
         build-essential \
-        tzdata \
         iproute2 \
+        htop \
+        && apt-get autoremove -y \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/* \
         && useradd -m -d /home/container container

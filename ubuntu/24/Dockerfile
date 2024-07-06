@@ -10,9 +10,12 @@ RUN		apt-get update -y \
 		&& apt-get install -y \
 		ca-certificates \
 		iproute2 \
-		tzdata \
 		adduser \
 		curl \
+		htop \
+		&& apt-get autoremove -y \
+		&& apt-get clean \
+		&& rm -rf /var/lib/apt/lists/* \
 		&& adduser -D -h /home/container container
 
 # Set user and workdir

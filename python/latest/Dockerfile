@@ -23,7 +23,7 @@ RUN		apt-get update -y \
         && apt-get autoremove -y \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/* \
-		&& adduser -D -h /home/container container
+		&& adduser --disabled-password --home  /home/container container
 
 USER	container
 ENV		USER=container HOME=/home/container

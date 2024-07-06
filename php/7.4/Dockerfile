@@ -41,7 +41,7 @@ RUN     apt-get update \
         && apt-get clean \
         && rm -rfv /var/lib/apt/lists/* \
         && npm install -g yarn \
-        && adduser -D -h ${WORKDIR} ${USER_NAME}
+        && adduser --disabled-password --home ${WORKDIR} ${USER_NAME}
 
 # Install soap extention
 RUN     docker-php-ext-install soap

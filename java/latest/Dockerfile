@@ -17,6 +17,7 @@ RUN     apt-get update -y \
         build-essential \
         iproute2 \
         htop \
+        adduser \
         && apt-get autoremove -y \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/* \

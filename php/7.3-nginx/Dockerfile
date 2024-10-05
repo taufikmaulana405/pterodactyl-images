@@ -73,11 +73,6 @@ RUN     docker-php-ext-install pdo_pgsql
 RUN     docker-php-ext-install bcmath
 
 #####################################
-# PHPRedis:
-#####################################
-RUN     pecl install redis && docker-php-ext-enable redis
-
-#####################################
 # Imagick:
 #####################################
 

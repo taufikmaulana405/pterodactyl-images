@@ -13,6 +13,7 @@ RUN		apt-get update -y \
 		curl \
 		adduser \
 		htop \
+		tzdata \
 		&& apt-get autoremove -y \
 		&& apt-get clean \
 		&& rm -rf /var/lib/apt/lists/* \
@@ -23,6 +24,6 @@ USER    container
 ENV     USER=container HOME=/home/container
 WORKDIR /home/container
 
-# Copy entrypoint
+# Set entrypoint
 COPY    ./entrypoint.sh /entrypoint.sh
 CMD     [ "/bin/bash", "/entrypoint.sh" ]

@@ -116,7 +116,7 @@ RUN     . ~/.bashrc
 # Link the PHP-FPM to /usr/sbin/:
 #####################################
 RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm
-RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm8
+RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm7
 
 #
 #--------------------------------------------------------------------------
@@ -124,14 +124,14 @@ RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm8
 #--------------------------------------------------------------------------
 #
 
+# Copy the php.ini
 ADD     ./local.ini /usr/local/etc/php/conf.d
 
+# Set user and workdir
 USER    ${USER_NAME}
 ENV     USER=${USER_NAME} HOME=${WORKDIR}
 WORKDIR ${WORKDIR}
 
-# Copy the entrypoint
-COPY    ./entrypoint-nginx.sh /entrypoint.sh
-
 # Set the entrypoint
+COPY    ./entrypoint-nginx.sh /entrypoint.sh
 CMD     ["/bin/bash", "/entrypoint.sh"]

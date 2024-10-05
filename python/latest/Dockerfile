@@ -25,12 +25,11 @@ RUN		apt-get update -y \
         && rm -rf /var/lib/apt/lists/* \
 		&& adduser --disabled-password --home  /home/container container
 
+# Set the user and workdir
 USER	container
 ENV		USER=container HOME=/home/container
 WORKDIR	/home/container
 
-# Copy the entrypoint
-COPY	./entrypoint.sh /entrypoint.sh
-
 # Set the entrypoint
+COPY	./entrypoint.sh /entrypoint.sh
 CMD		[ "/bin/bash", "/entrypoint.sh" ]

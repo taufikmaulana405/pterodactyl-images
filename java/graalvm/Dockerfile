@@ -24,5 +24,6 @@ USER    container
 ENV     USER=container HOME=/home/container
 WORKDIR /home/container
 
+# Set entrypoint
 COPY    ./entrypoint.sh /entrypoint.sh
 CMD     [ "/bin/bash", "/entrypoint.sh" ]

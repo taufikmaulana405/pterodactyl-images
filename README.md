@@ -30,6 +30,7 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
     - [Wordpress](https://wordpress.org/)
     - [Laravel](https://laravel.com/)
     - [Panel Pterodactyl](https://pterodactyl.io/)
+    - [Azuriom](https://azuriom.com/)
 - Tags:
     - PHP 7.1
         - `ghcr.io/taufikmaulana405/pterodactyl-images:php7.1`
@@ -70,6 +71,8 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
 - Tags:
     - NodeJS Latest
         - `ghcr.io/taufikmaulana405/pterodactyl-images:nodejs`
+    - NodeJS LTS (Long Term Support)
+        - `ghcr.io/taufikmaulana405/pterodactyl-images:nodejs_lts`
 
 ### Java
 - Tags:

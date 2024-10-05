@@ -35,6 +35,7 @@ jobs:
       matrix:
         tag:
           - latest
+          - lts
 
     steps:
       # Checkout the repository

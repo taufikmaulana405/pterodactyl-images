@@ -1,5 +1,5 @@
 # Import base image
-FROM node:latest
+FROM node:lts
 
 # Environment variables
 ENV DEBIAN_FRONTEND=noninteractive

@@ -21,6 +21,12 @@ RUN curl --silent --location https://dl-ssl.google.com/linux/linux_signing_key.p
     locales \
     htop \
     google-chrome-stable \
+    fonts-ipafont-gothic \
+    fonts-wqy-zenhei \
+    fonts-thai-tlwg \
+    fonts-kacst \
+    fonts-freefont-ttf\
+    libxss1 \
     && npm -g install npm@latest \
     && apt-get autoremove -y \
     && apt-get clean \

@@ -76,39 +76,41 @@ RUN     docker-php-ext-install bcmath
 #####################################
 # PHPRedis:
 #####################################
-RUN     pecl install redis && docker-php-ext-enable redis
+RUN     pecl install redis \
+        && docker-php-ext-enable redis
 
 #####################################
 # Imagick:
 #####################################
 
-RUN     pecl install imagick && \
-        docker-php-ext-enable imagick
+RUN     pecl install imagick \
+        && docker-php-ext-enable imagick
 
 #####################################
 # GD:
 #####################################
 
 # Install the PHP gd library
-RUN     docker-php-ext-install gd && \
-        docker-php-ext-configure gd && \
-        docker-php-ext-install gd
+RUN     docker-php-ext-install gd \
+        && docker-php-ext-configure gd \
+        && docker-php-ext-install gd
 
 #####################################
 # PHP Memcached:
 #####################################
 
 # Install the php memcached extension
-RUN     pecl install memcached && docker-php-ext-enable memcached
+RUN     pecl install memcached \
+        && docker-php-ext-enable memcached
 
 #####################################
 # Composer:
 #####################################
 
 # Install composer and add its bin to the PATH.
-RUN     curl -s http://getcomposer.org/installer | php && \
-        echo "export PATH=${PATH}:/home/container/vendor/bin" >> ~/.bashrc && \
-        mv composer.phar /usr/local/bin/composer
+RUN     curl -s http://getcomposer.org/installer | php \
+        && echo "export PATH=${PATH}:/home/container/vendor/bin" >> ~/.bashrc \
+        && mv composer.phar /usr/local/bin/composer
         
 # Source the bash
 RUN     . ~/.bashrc

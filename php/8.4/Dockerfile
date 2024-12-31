@@ -1,5 +1,5 @@
 # Import the base image
-FROM    php:7.1-fpm
+FROM    php:8.4-fpm
 
 # Set the environment variables
 ENV     DEBIAN_FRONTEND=noninteractive
@@ -33,13 +33,14 @@ RUN     apt-get update \
         libmagickwand-dev \
         git \
         libxml2-dev \
-        nginx \
-        ash \
+        nodejs \
+        npm \
         htop \
         adduser \
         && apt-get autoremove -y \
         && apt-get clean \
         && rm -rfv /var/lib/apt/lists/* \
+        && npm install -g yarn \
         && adduser --disabled-password --home ${WORKDIR} ${USER_NAME}
 
 # Install soap extention
@@ -73,6 +74,18 @@ RUN     docker-php-ext-install pdo_pgsql
 RUN     docker-php-ext-install bcmath
 
 #####################################
+# PHPRedis:
+#####################################
+RUN     pecl install redis \
+        && docker-php-ext-enable redis
+
+#####################################
+# MongoDB:
+#####################################
+RUN     pecl install mongodb \
+        && docker-php-ext-enable mongodb
+
+#####################################
 # Imagick:
 #####################################
 
@@ -87,6 +100,13 @@ RUN     pecl install imagick \
 RUN     docker-php-ext-install gd \
         && docker-php-ext-configure gd --with-freetype --with-jpeg \
         && docker-php-ext-install gd
+
+#####################################
+# xDebug:
+#####################################
+
+# Install the xdebug extension
+RUN     pecl install xdebug
 
 #####################################
 # PHP Memcached:
@@ -112,7 +132,7 @@ RUN     . ~/.bashrc
 # Link the PHP-FPM to /usr/sbin/:
 #####################################
 RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm
-RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm7
+RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm8
 
 #
 #--------------------------------------------------------------------------
@@ -129,5 +149,5 @@ ENV     USER=${USER_NAME} HOME=${WORKDIR}
 WORKDIR ${WORKDIR}
 
 # Set the entrypoint
-COPY    ./entrypoint-nginx.sh /entrypoint.sh
+COPY    ./entrypoint.sh /entrypoint.sh
 CMD     ["/bin/bash", "/entrypoint.sh"]

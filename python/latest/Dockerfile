@@ -2,7 +2,10 @@
 FROM	python:latest
 
 # Set the environment variables
-ENV		DEBIAN_FRONTEND=noninteractive
+ENV	DEBIAN_FRONTEND=noninteractive \
+        USER_NAME=container \
+        GROUP_NAME=container \
+        WORKDIR=/home/container
 
 # Installing Depedencies
 RUN		apt-get update -y \
@@ -23,12 +26,13 @@ RUN		apt-get update -y \
         && apt-get autoremove -y \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/* \
-		&& adduser --disabled-password --home  /home/container container
+		&& adduser --disabled-password --home ${WORKDIR} ${USER_NAME}
 
 # Set the user and workdir
-USER	container
-ENV		USER=container HOME=/home/container
-WORKDIR	/home/container
+USER	${USER_NAME}
+ENV	USER=${USER_NAME} \
+        HOME=${WORKDIR}
+WORKDIR	${WORKDIR}
 
 # Set the entrypoint
 COPY	./entrypoint.sh /entrypoint.sh

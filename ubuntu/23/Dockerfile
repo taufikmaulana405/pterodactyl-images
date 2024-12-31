@@ -2,7 +2,10 @@
 FROM 	ubuntu:23.04
 
 # Environment variables
-ENV 	DEBIAN_FRONTEND=noninteractive
+ENV 	DEBIAN_FRONTEND=noninteractive \
+		USER_NAME=container \
+		GROUP_NAME=container \
+		WORKDIR=/home/container
 
 # Install packages
 RUN		apt-get update -y \
@@ -17,12 +20,13 @@ RUN		apt-get update -y \
 		&& apt-get autoremove -y \
 		&& apt-get clean \
 		&& rm -rf /var/lib/apt/lists/* \
-		&& adduser --disabled-password --home  /home/container container
+		&& adduser --disabled-password --home ${WORKDIR} ${USER_NAME}
 
 # Set user and workdir
-USER    container
-ENV     USER=container HOME=/home/container
-WORKDIR /home/container
+USER	${USER_NAME}
+ENV		USER=${USER_NAME} \
+		HOME=${WORKDIR}
+WORKDIR	${WORKDIR}
 
 # Set entrypoint
 COPY    ./entrypoint.sh /entrypoint.sh

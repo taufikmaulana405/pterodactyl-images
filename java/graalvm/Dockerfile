@@ -1,6 +1,11 @@
 # Import base image
 FROM    ghcr.io/graalvm/jdk-community:latest
 
+# Set the environment variables
+ENV     USER_NAME=container \
+        GROUP_NAME=container \
+        WORKDIR=/home/container
+
 # Installing Dependencies
 RUN     microdnf update \
         && microdnf install -y \
@@ -18,11 +23,13 @@ RUN     microdnf update \
         libstdc++ \
         lsof \
         && microdnf clean all \
-        && adduser --home-dir /home/container container
+        && adduser --home-dir ${WORKDIR} ${USER_NAME}
 
-USER    container
-ENV     USER=container HOME=/home/container
-WORKDIR /home/container
+# Set the user and workdir
+USER    ${USER_NAME}
+ENV     USER=${USER_NAME} \
+        HOME=${WORKDIR}
+WORKDIR ${WORKDIR}
 
 # Set entrypoint
 COPY    ./entrypoint.sh /entrypoint.sh

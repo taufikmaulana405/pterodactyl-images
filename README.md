@@ -94,8 +94,6 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
         - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu`
     - Ubuntu 24
         - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_24`
-    - Ubuntu 23
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_23`
     - Ubuntu 22
         - `ghcr.io/taufikmaulana405/pterodactyl-images:ubuntu_22`
     - Ubuntu 20
@@ -109,8 +107,6 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
         - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu`
     - Ubuntu 24
         - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_24`
-    - Ubuntu 23
-        - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_23`
     - Ubuntu 22
         - `ghcr.io/taufikmaulana405/pterodactyl-images:installer-ubuntu_22`
     - Ubuntu 20

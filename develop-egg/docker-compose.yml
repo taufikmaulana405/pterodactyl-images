@@ -5,6 +5,6 @@ services:
     # Mount the installation script and the data directory
     volumes:
       - ./data-install:/mnt/server
-      - install.sh:/mnt/server/install.sh
+      - ./install.sh:/mnt/server/install.sh
     # Run the installation script
     command: /bin/bash /mnt/server/install.sh

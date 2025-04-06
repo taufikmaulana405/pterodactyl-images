@@ -41,6 +41,13 @@ jobs:
           - 18
 
     steps:
+      # Track and monitor the workflow runs, jobs and steps resource metrics.
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+        with:
+          metric_frequency: 1
+          proc_trace_sys_enable: true
+
       # Checkout the repository
       - name: Checkout
         uses: actions/checkout@v4

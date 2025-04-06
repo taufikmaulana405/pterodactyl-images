@@ -10,9 +10,7 @@ ENV     GROUP_NAME=container
 ENV     USER_ID=1000
 ENV     GROUP_ID=1000
 ARG     WORKDIR=/home/container
-ENV     COMPOSER_HOME=${WORKDIR}/.composer
 ENV     COMPOSER_MEMORY_LIMIT='-1'
-ENV     PATH=${PATH}:${WORKDIR}/vendor/bin
 
 # Installing Depedencies
 RUN     apt-get update \
@@ -29,10 +27,9 @@ RUN     apt-get update \
         libpng-dev \
         libfreetype6-dev \
         libssl-dev \
-        openssh-server \
         libmagickwand-dev \
-        git \
         libxml2-dev \
+        git \
         nodejs \
         npm \
         htop \
@@ -82,7 +79,7 @@ RUN     pecl install redis \
 #####################################
 # MongoDB:
 #####################################
-RUN     pecl install mongodb \
+RUN     pecl install mongodb-1.20.1 \
         && docker-php-ext-enable mongodb
 
 #####################################
@@ -102,13 +99,6 @@ RUN     docker-php-ext-install gd \
         && docker-php-ext-install gd
 
 #####################################
-# xDebug:
-#####################################
-
-# Install the xdebug extension
-RUN     pecl install xdebug
-
-#####################################
 # PHP Memcached:
 #####################################
 
@@ -121,12 +111,8 @@ RUN     pecl install memcached \
 #####################################
 
 # Install composer and add its bin to the PATH.
-RUN     curl -s http://getcomposer.org/installer | php \
-        && echo "export PATH=${PATH}:/home/container/vendor/bin" >> ~/.bashrc \
+RUN     curl -s https://getcomposer.org/installer | php \
         && mv composer.phar /usr/local/bin/composer
-        
-# Source the bash
-RUN     . ~/.bashrc
 
 #####################################
 # Link the PHP-FPM to /usr/sbin/:
@@ -141,7 +127,7 @@ RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm8
 #
 
 # Copy the php.ini
-ADD     ./local.ini /usr/local/etc/php/conf.d
+COPY     ./local.ini /usr/local/etc/php/conf.d
 
 # Set user and workdir
 USER    ${USER_NAME}

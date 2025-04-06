@@ -29,10 +29,9 @@ RUN     apt-get update \
         libpng-dev \
         libfreetype6-dev \
         libssl-dev \
-        openssh-server \
         libmagickwand-dev \
-        git \
         libxml2-dev \
+        git \
         nginx \
         ash \
         htop \
@@ -120,8 +119,7 @@ RUN     pecl install memcached \
 #####################################
 
 # Install composer and add its bin to the PATH.
-RUN     curl -s http://getcomposer.org/installer | php \
-        && echo "export PATH=${PATH}:/home/container/vendor/bin" >> ~/.bashrc \
+RUN     curl -s https://getcomposer.org/installer | php \
         && mv composer.phar /usr/local/bin/composer
 
 # Source the bash
@@ -140,7 +138,7 @@ RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm8
 #
 
 # Copy the php.ini
-ADD     ./local.ini /usr/local/etc/php/conf.d
+COPY     ./local.ini /usr/local/etc/php/conf.d
 
 # Set the user and workdir
 USER    ${USER_NAME}

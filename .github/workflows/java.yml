@@ -82,9 +82,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ runner.temp }}/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          key: ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-buildx-
+            ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-
 
       # Build and push Docker image to the registry
       - name: Build and push

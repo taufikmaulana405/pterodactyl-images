@@ -52,6 +52,10 @@ jobs:
           - 8.4-nginx
 
     steps:
+      # Track and monitor the workflow runs, jobs and steps resource metrics.
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+
       # Checkout the repository
       - name: Checkout
         uses: actions/checkout@v4

@@ -57,6 +57,7 @@ jobs:
         uses: catchpoint/workflow-telemetry-action@v2
         with:
           metric_frequency: 1
+          proc_trace_sys_enable: true
 
       # Checkout the repository
       - name: Checkout

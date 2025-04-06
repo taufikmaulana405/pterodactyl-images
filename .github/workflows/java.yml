@@ -85,7 +85,7 @@ jobs:
           context: ./${{ env.PACKAGE_TAG }}
           file: ./${{ env.PACKAGE_TAG }}/${{ matrix.tag }}/Dockerfile
           cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-to: type=gha,mode=max,compression=zstd
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.TAG_NAME }}

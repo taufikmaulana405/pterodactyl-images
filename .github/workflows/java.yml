@@ -21,6 +21,7 @@ env:
 permissions:
   actions: read
   packages: write
+  pull-requests: write
 
 concurrency:
   group: java${{ github.ref }}-1
@@ -39,6 +40,10 @@ jobs:
           - liberica
 
     steps:
+      # Track and monitor the workflow runs, jobs and steps resource metrics.
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+
       # Checkout the repository
       - name: Checkout
         uses: actions/checkout@v4

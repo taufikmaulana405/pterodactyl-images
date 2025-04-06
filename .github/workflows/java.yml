@@ -43,6 +43,8 @@ jobs:
       # Track and monitor the workflow runs, jobs and steps resource metrics.
       - name: Collect Workflow Telemetry
         uses: catchpoint/workflow-telemetry-action@v2
+        with:
+          metric_frequency: 1
 
       # Checkout the repository
       - name: Checkout

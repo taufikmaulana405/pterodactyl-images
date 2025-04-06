@@ -9,7 +9,6 @@ on:
       - master
     paths:
       java/**
-      .github/workflows/java.yml
 
 env:
   # Use docker.io for Docker Hub if empty

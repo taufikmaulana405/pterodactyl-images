@@ -88,7 +88,5 @@ jobs:
           context: ./${{ env.PACKAGE_TAG }}
           file: ./${{ env.PACKAGE_TAG }}/${{ matrix.package_version }}/Dockerfile
           push: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max,compression=zstd,compression-level=22
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.DOCKER_IMAGE_TAG }}

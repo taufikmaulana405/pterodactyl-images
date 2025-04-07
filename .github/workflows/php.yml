@@ -26,12 +26,12 @@ concurrency:
 
 jobs:
   push:
-    name: "php${{ matrix.tag }}"
+    name: "php${{ matrix.package_version }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        tag:
+        package_version:
           - 7.1
           - 7.1-nginx
           - 7.2
@@ -85,21 +85,21 @@ jobs:
       #   uses: actions/cache@v4
       #   with:
       #     path: ${{ runner.temp }}/.buildx-cache
-      #     key: ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-${{ github.sha }}
+      #     key: ${{ env.PACKAGE_TAG }}_${{ matrix.package_version }}-${{ runner.os }}-buildx-${{ github.sha }}
       #     restore-keys: |
-      #       ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-
+      #       ${{ env.PACKAGE_TAG }}_${{ matrix.package_version }}-${{ runner.os }}-buildx-
 
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: ./${{ env.PACKAGE_TAG }}
-          file: ./${{ env.PACKAGE_TAG }}/${{ matrix.tag }}/Dockerfile
+          file: ./${{ env.PACKAGE_TAG }}/${{ matrix.package_version }}/Dockerfile
           # **CACHE LOCAL DOCKER LAYERS <-> GITHUB ACTIONS CACHE**
           # cache-from: type=local,src=${{ runner.temp }}/.buildx-cache
           # cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new,mode=max,compression=zstd,compression-level=22
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}${{ matrix.tag }}
+            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}${{ matrix.package_version }}
 
       # **CACHE LOCAL DOCKER LAYERS <-> GITHUB ACTIONS CACHE**
       # Temp fix

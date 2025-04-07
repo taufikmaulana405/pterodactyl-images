@@ -28,12 +28,12 @@ concurrency:
 
 jobs:
   push:
-    name: "installer-ubuntu_${{ matrix.tag }}"
+    name: "installer-ubuntu_${{ matrix.package_version }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        tag:
+        package_version:
           - latest
           - 24
           - 22
@@ -75,11 +75,11 @@ jobs:
       - name: Set Tag Docker Image
         run: |
           echo "Package: ${{ env.PACKAGE_TAG }}"
-          echo "Version: ${{ matrix.tag }}"
-          if [ "${{ matrix.tag }}" = "latest" ]; then
+          echo "Version: ${{ matrix.package_version }}"
+          if [ "${{ matrix.package_version }}" = "latest" ]; then
             RESULT_TAG="${{ env.PACKAGE_TAG }}"
           else
-            RESULT_TAG="${{ env.PACKAGE_TAG }}_${{ matrix.tag }}"
+            RESULT_TAG="${{ env.PACKAGE_TAG }}_${{ matrix.package_version }}"
           fi
           echo "DOCKER_IMAGE_TAG=${RESULT_TAG}" >> $GITHUB_ENV
           echo "Docker Image Tag Successfully to: ${RESULT_TAG}"
@@ -89,7 +89,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./installer/ubuntu
-          file: ./installer/ubuntu/${{ matrix.tag }}/Dockerfile
+          file: ./installer/ubuntu/${{ matrix.package_version }}/Dockerfile
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.DOCKER_IMAGE_TAG }}

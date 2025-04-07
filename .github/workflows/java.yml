@@ -68,9 +68,10 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Set tag name based on condition
-      - name: Set tag name
-        id: set_tag_name
+      # Set tag docker image based on the matrix tag
+      # If the matrix tag is "latest", set the TAG_NAME to the PACKAGE_TAG
+      # Otherwise, append the matrix tag to the PACKAGE_TAG
+      - name: Set Tag Docker Image
         run: |
           env
           if [ "${{ matrix.tag }}" = "latest" ]; then

@@ -96,7 +96,7 @@ jobs:
           # cache-from: type=local,src=${{ runner.temp }}/.buildx-cache
           # cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new,mode=max,compression=zstd,compression-level=22
           cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-to: type=gha,mode=max,compression=zstd
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}${{ matrix.tag }}

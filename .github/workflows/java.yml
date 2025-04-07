@@ -16,7 +16,7 @@ env:
   # Package tag name
   PACKAGE_TAG: java
   # Tag Name default value
-  TAG_NAME: none
+  DOCKER_IMAGE_TAG: none
 
 permissions:
   actions: read
@@ -80,7 +80,7 @@ jobs:
           else
             RESULT_TAG="${{ env.PACKAGE_TAG }}_${{ matrix.tag }}"
           fi
-          echo "TAG_NAME=${RESULT_TAG}" >> $GITHUB_ENV
+          echo "DOCKER_IMAGE_TAG=${RESULT_TAG}" >> $GITHUB_ENV
           echo "Docker Image Tag Successfully to: ${RESULT_TAG}"
 
       # Build and push Docker image to the registry
@@ -91,4 +91,4 @@ jobs:
           file: ./${{ env.PACKAGE_TAG }}/${{ matrix.tag }}/Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.TAG_NAME }}
+            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.DOCKER_IMAGE_TAG }}

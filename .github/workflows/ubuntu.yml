@@ -16,7 +16,7 @@ env:
   # Package tag name
   PACKAGE_TAG: ubuntu
   # Tag Name default value
-  TAG_NAME: none
+  DOCKER_IMAGE_TAG: none
 
 permissions:
   actions: read
@@ -69,15 +69,20 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Set tag name based on condition
-      - name: Set tag name
-        id: set_tag_name
+      # Set tag docker image based on the Version of Package
+      # If the matrix tag is "latest", set the Tag Docker Image to only Package
+      # Otherwise, append the matrix tag to the Package + Version of Package
+      - name: Set Tag Docker Image
         run: |
+          echo "Package: ${{ env.PACKAGE_TAG }}"
+          echo "Version: ${{ matrix.tag }}"
           if [ "${{ matrix.tag }}" = "latest" ]; then
-            echo "TAG_NAME=${{ env.PACKAGE_TAG }}" >> $GITHUB_ENV
+            RESULT_TAG="${{ env.PACKAGE_TAG }}"
           else
-            echo "TAG_NAME=${{ env.PACKAGE_TAG }}_${{ matrix.tag }}" >> $GITHUB_ENV
+            RESULT_TAG="${{ env.PACKAGE_TAG }}_${{ matrix.tag }}"
           fi
+          echo "DOCKER_IMAGE_TAG=${RESULT_TAG}" >> $GITHUB_ENV
+          echo "Docker Image Tag Successfully to: ${RESULT_TAG}"
 
       # Build and push Docker image to the registry
       - name: Build and push
@@ -87,4 +92,4 @@ jobs:
           file: ./${{ env.PACKAGE_TAG }}/${{ matrix.tag }}/Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.TAG_NAME }}
+            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.DOCKER_IMAGE_TAG }}

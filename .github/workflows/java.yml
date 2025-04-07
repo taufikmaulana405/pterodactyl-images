@@ -82,9 +82,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ runner.temp }}/.buildx-cache
-          key: ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-args_mode_min-${{ github.sha }}
+          key: ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-args_mode_max_compression_zstd-${{ github.sha }}
           restore-keys: |
-            ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-args_mode_min-
+            ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-args_mode_max_compression_zstd-
 
       # Build and push Docker image to the registry
       - name: Build and push
@@ -93,7 +93,7 @@ jobs:
           context: ./${{ env.PACKAGE_TAG }}
           file: ./${{ env.PACKAGE_TAG }}/${{ matrix.tag }}/Dockerfile
           cache-from: type=local,src=${{ runner.temp }}/.buildx-cache
-          cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new,mode=min
+          cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new,mode=max,compression=zstd
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.TAG_NAME }}

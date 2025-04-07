@@ -84,7 +84,7 @@ jobs:
           path: ${{ runner.temp }}/.buildx-cache
           key: ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-args_mode_min-${{ github.sha }}
           restore-keys: |
-            ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-args_default-
+            ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-args_mode_min-
 
       # Build and push Docker image to the registry
       - name: Build and push

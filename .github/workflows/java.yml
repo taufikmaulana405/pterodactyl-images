@@ -84,8 +84,8 @@ jobs:
         with:
           context: ./${{ env.PACKAGE_TAG }}
           file: ./${{ env.PACKAGE_TAG }}/${{ matrix.tag }}/Dockerfile
-          cache-from: type=registry,ref=${{ env.REGISTRY}}/${{ github.repository_owner }}/buildx-cache:java
-          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ github.repository_owner }}/buildx-cache:java,mode=max
+          cache-from: type=registry,ref=${{ env.REGISTRY}}/${{ github.repository_owner }}/buildx-cache:java_${{ matrix.tag }}
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ github.repository_owner }}/buildx-cache:java_${{ matrix.tag }},mode=max
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.TAG_NAME }}

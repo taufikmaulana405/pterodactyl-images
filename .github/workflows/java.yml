@@ -82,7 +82,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ runner.temp }}/.buildx-cache
-          key: ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-${{ github.sha }}
+          key: ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-args_default-${{ github.sha }}
           restore-keys: |
             ${{ env.PACKAGE_TAG }}_${{ matrix.tag }}-${{ runner.os }}-buildx-
 
@@ -93,7 +93,7 @@ jobs:
           context: ./${{ env.PACKAGE_TAG }}
           file: ./${{ env.PACKAGE_TAG }}/${{ matrix.tag }}/Dockerfile
           cache-from: type=local,src=${{ runner.temp }}/.buildx-cache
-          cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new,mode=max,compression=zstd,compression-level=22
+          cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.TAG_NAME }}

@@ -80,7 +80,7 @@ jobs:
           else
             echo "TAG_NAME=${{ env.PACKAGE_TAG }}_${{ matrix.tag }}" >> $GITHUB_ENV
           fi
-          echo "Docker Image Tag Successfully set to: ${{ env.TAG_NAME }}"
+          echo "Docker Image Tag Successfully ${GITHUB_ENV}"
 
       # Build and push Docker image to the registry
       - name: Build and push

@@ -86,7 +86,7 @@ RUN     pecl install mongodb \
 # Imagick:
 #####################################
 
-# Reff: https://github.com/mlocati/docker-php-extension-installer
+# FIX: Failed to install imagick
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN install-php-extensions imagick
 

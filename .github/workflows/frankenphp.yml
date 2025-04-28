@@ -27,7 +27,7 @@ concurrency:
 
 jobs:
   push:
-    name: "frankenphp-${{ matrix.php_version }}"
+    name: "frankenphp-php${{ matrix.php_version }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -76,4 +76,4 @@ jobs:
           build-args: |
             PHP_VERSION=${{ matrix.php_version }}
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}-${{ matrix.php_version }}
+            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}-php${{ matrix.php_version }}

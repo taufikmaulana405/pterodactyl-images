@@ -5,12 +5,10 @@ FROM    php:8.3-fpm
 ENV     DEBIAN_FRONTEND=noninteractive
 ENV     PS1="\u@\h:\w\\$ "
 ENV     TZ="Asia/Jakarta"
-ENV     USER_NAME=container
-ENV     GROUP_NAME=container
-ENV     USER_ID=1000
-ENV     GROUP_ID=1000
-ARG     WORKDIR=/home/container
 ENV     COMPOSER_MEMORY_LIMIT='-1'
+ARG     USER_NAME=container
+ARG     USER_ID=998
+ARG     WORKDIR=/home/${USER_NAME}
 
 # Installing Depedencies
 RUN     apt-get update \

@@ -5,7 +5,6 @@ FROM php:${PHP_VERSION}-zts-bookworm AS base
 
 # Set environment variables
 ARG USER_NAME=container
-ARG GROUP_NAME=container
 ARG USER_ID=998
 ARG WORKDIR=/home/${USER_NAME}
 ARG BIN_DIR=/usr/local/bin

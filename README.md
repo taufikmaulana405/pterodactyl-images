@@ -6,24 +6,20 @@ This repository contains dockerfiles for Pterodactyl eggs. The docker files are 
 ### PHP
 - Designed for use Web Applications
 - Extensions: 
-
-| Module PHP                     | PHP 8.4 | PHP 8.3 | PHP 8.2 | PHP 8.1 | PHP 8.0 | PHP 7.4 | PHP 7.3 | PHP 7.2 | PHP 7.1 |
-| ------------------------------ | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
-| soap                           |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
-| exif                           |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
-| pcntl                          |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
-| intl                           |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
-| gmp                            |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
-| zip                            |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
-| pdo_mysql                      |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
-| pdo_pgsql                      |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
-| bcmath                         |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
-| redis                          |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |  6.0.2  |  6.0.2  |  5.3.7  |
-| mongodb                        |   ✔️    |   ✔️   |    ✔️   |   ✔️   |  1.20.1  |  1.20.1 |  1.16.2 |  1.16.2 |  1.11.1 |
-| imagick                        |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
-| gd                             |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
-| gd --with-freetype --with-jpeg |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ❌   |   ❌   |    ❌   |   ✔️   |
-| memcached                      |   ✔️    |   ✔️   |    ✔️   |   ✔️   |   ✔️    |    ✔️   |   ✔️   |    ✔️   |   ✔️   |
+    - soap
+    - exif
+    - pcntl
+    - intl
+    - gmp
+    - zip
+    - pdo_mysql
+    - pdo_pgsql
+    - bcmath
+    - redis
+    - mongodb
+    - imagick
+    - gd
+    - memcached
 
 - Tested:
     - [Wordpress](https://wordpress.org/)

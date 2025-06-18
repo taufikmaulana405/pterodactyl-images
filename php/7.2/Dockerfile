@@ -14,19 +14,6 @@ ARG     WORKDIR=/home/${USER_NAME}
 RUN     apt-get update \
         && apt-get upgrade -y \
         && apt-get install -y --force-yes --no-install-recommends \
-        libmemcached-dev \
-        libmcrypt-dev \
-        libreadline-dev \
-        libgmp-dev \
-        libzip-dev \
-        libz-dev \
-        libpq-dev \
-        libjpeg-dev \
-        libpng-dev \
-        libfreetype6-dev \
-        libssl-dev \
-        libmagickwand-dev \
-        libxml2-dev \
         git \
         nodejs \
         npm \
@@ -38,69 +25,26 @@ RUN     apt-get update \
         && npm install -g yarn \
         && adduser --disabled-password --home ${WORKDIR} ${USER_NAME}
 
-# Install soap extention
-RUN     docker-php-ext-install soap
+# Install "install-php-extensions"
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-# Install for image manipulationdock
-RUN     docker-php-ext-install exif
-
-# Install the PHP pcntl extention
-RUN     docker-php-ext-install pcntl
-
-# Install the PHP intl extention
-RUN     docker-php-ext-install intl
-
-# Install the PHP gmp extention
-RUN     docker-php-ext-install gmp
-
-# Install the PHP zip extention
-RUN     docker-php-ext-install zip
-
-# Install the PHP pdo_mysql extention
-RUN     docker-php-ext-install pdo_mysql
-
-# Install the PHP mysqli extention
-RUN     docker-php-ext-install mysqli
-
-# Install the PHP pdo_pgsql extention
-RUN     docker-php-ext-install pdo_pgsql
-
-# Install the PHP bcmath extension
-RUN     docker-php-ext-install bcmath
-
-#####################################
-# PHPRedis:
-#####################################
-RUN     pecl install redis-6.0.2 \
-        && docker-php-ext-enable redis
-
-#####################################
-# MongoDB:
-#####################################
-RUN     pecl install mongodb-1.16.2 \
-        && docker-php-ext-enable mongodb
-
-#####################################
-# Imagick:
-#####################################
-
-RUN     pecl install imagick \
-        && docker-php-ext-enable imagick
-
-#####################################
-# GD:
-#####################################
-
-# Install the PHP gd library
-RUN     docker-php-ext-install gd
-
-#####################################
-# PHP Memcached:
-#####################################
-
-# Install the php memcached extension
-RUN     pecl install memcached \
-        && docker-php-ext-enable memcached
+# Install PHP extensions
+RUN install-php-extensions \
+        bcmath \
+        exif \
+        gd \
+        gmp \
+        imagick \
+        intl \
+        memcached \
+        mongodb \
+        mysqli \
+        pcntl \
+        pdo_mysql \
+        pdo_pgsql \
+        redis \
+        soap \
+        zip
 
 #####################################
 # Composer:

@@ -8,6 +8,7 @@ on:
     branches:
       - master
     paths:
+      .github/workflows/php.yml
       php/**
 
 env:
@@ -15,6 +16,8 @@ env:
   REGISTRY: ghcr.io
   # Package tag name
   PACKAGE_TAG: php
+  # Tag Name default value
+  DOCKER_IMAGE_TAG: none
 
 permissions:
   actions: read
@@ -32,24 +35,20 @@ jobs:
       fail-fast: false
       matrix:
         package_version:
+          - 7
           - 7.1
-          - 7.1-nginx
           - 7.2
-          - 7.2-nginx
           - 7.3
-          - 7.3-nginx
           - 7.4
-          - 7.4-nginx
+          - 8
           - "8.0"
-          - 8.0-nginx
           - 8.1
-          - 8.1-nginx
           - 8.2
-          - 8.2-nginx
           - 8.3
-          - 8.3-nginx
           - 8.4
-          - 8.4-nginx
+        dockerfile:
+          - Dockerfile
+          - nginx.Dockerfile
 
     steps:
       # Track and monitor the workflow runs, jobs and steps resource metrics.
@@ -80,6 +79,22 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # Set tag docker image based on the Version of Package
+      # If the matrix tag is "latest", set the Tag Docker Image to only Package
+      # Otherwise, append the matrix tag to the Package + Version of Package
+      - name: Set Tag Docker Image
+        run: |
+          echo "Package: ${{ env.PACKAGE_TAG }}"
+          echo "Version: ${{ matrix.package_version }}"
+          echo "Dockerfile: ${{ matrix.dockerfile }}"
+          if [ "${{ matrix.dockerfile }}" = "nginx.Dockerfile" ]; then
+            RESULT_TAG="${{ env.PACKAGE_TAG }}${{ matrix.package_version }}-nginx"
+          else
+            RESULT_TAG="${{ env.PACKAGE_TAG }}${{ matrix.package_version }}"
+          fi
+          echo "DOCKER_IMAGE_TAG=${RESULT_TAG}" >> $GITHUB_ENV
+          echo "Docker Image Tag Successfully to: ${RESULT_TAG}"
+
       # **CACHE LOCAL DOCKER LAYERS <-> GITHUB ACTIONS CACHE**
       # - name: Sync cache Docker layers local to GitHub Actions cache
       #   uses: actions/cache@v4
@@ -93,13 +108,15 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./${{ env.PACKAGE_TAG }}
-          file: ./${{ env.PACKAGE_TAG }}/${{ matrix.package_version }}/Dockerfile
+          file: ./${{ env.PACKAGE_TAG }}/${{ matrix.dockerfile }}
           # **CACHE LOCAL DOCKER LAYERS <-> GITHUB ACTIONS CACHE**
           # cache-from: type=local,src=${{ runner.temp }}/.buildx-cache
           # cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new,mode=max,compression=zstd,compression-level=22
           push: true
+          build-args: |
+            PHP_VERSION=${{ matrix.package_version }}
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.PACKAGE_TAG }}${{ matrix.package_version }}
+            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.DOCKER_IMAGE_TAG }}
 
       # **CACHE LOCAL DOCKER LAYERS <-> GITHUB ACTIONS CACHE**
       # Temp fix

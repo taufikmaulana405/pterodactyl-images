@@ -1,4 +1,4 @@
-ARG PHP_VERSION=${PHP_VERSION:-8.2}
+ARG PHP_VERSION=8.2
 
 # Import base image
 FROM php:${PHP_VERSION}-zts-bookworm AS base

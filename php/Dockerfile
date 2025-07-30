@@ -58,9 +58,10 @@ RUN     curl -s https://getcomposer.org/installer | php \
         && mv composer.phar /usr/local/bin/composer
 
 #####################################
-# Link the PHP-FPM to /usr/sbin/:
+# Link the PHP-FPM and based on version to /usr/sbin/:
 #####################################
 RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm
+RUN     ln -s /usr/local/sbin/php-fpm /usr/sbin/php-fpm${PHP_VERSION%%.*}
 
 #
 #--------------------------------------------------------------------------

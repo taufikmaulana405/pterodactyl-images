@@ -79,7 +79,7 @@ jobs:
 
       # Build and push Docker image to the registry
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./installer/ubuntu
           file: ./installer/ubuntu/${{ matrix.package_version }}/Dockerfile

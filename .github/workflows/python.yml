@@ -49,7 +49,7 @@ jobs:
 
       # Build and push Docker image to a container registry
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./${{ env.PACKAGE_TAG }}
           file: ./${{ env.PACKAGE_TAG }}/latest/Dockerfile
